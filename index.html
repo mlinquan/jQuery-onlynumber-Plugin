@@ -11,9 +11,7 @@
 <script>
 (function($){
     $(function() {
-        $("#default").onlynumber({
-            when: "keyup keydown change"
-        });
+        $("#default").onlynumber();
         $("#positive").onlynumber({
             when: "keyup keydown change",
             min: 0
@@ -37,7 +35,7 @@
 </head>
 
 <body>
-<p>Default, All number (2 digits after the decimal point): <input type="text" id="default"></p>
+<p>Default - All number, Monitor change event (2 digits after the decimal point): <input type="text" id="default"></p>
 <p>Only allow positive number: <input type="text" id="positive"></p>
 <p>Only allow negative numbers: <input type="text" id="negative"></p>
 <p>Only allow 1 to 100: <input type="text" id="min1max100"></p>
