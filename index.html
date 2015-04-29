@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>jQuery-onlyNumber-Plugin</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<script src="jquery-1.11.1.min.js"></script>
+<script src="jquery.onlynumber.js"></script>
+<script>
+(function($){
+    $(function() {
+        $("#default").onlynumber({
+            when: "keyup keydown change"
+        });
+        $("#positive").onlynumber({
+            when: "keyup keydown change",
+            min: 0
+        });
+        $("#negative").onlynumber({
+            when: "keyup keydown change",
+            max: 0
+        });
+        $("#min1max100").onlynumber({
+            when: "keyup keydown change",
+            min: 1,
+            max: 100
+        });
+        $("#integer").onlynumber({
+            when: "keyup keydown change",
+            decimal: 0
+        });
+    });
+})(jQuery);
+</script>
+</head>
+
+<body>
+<p>Default, All number (2 digits after the decimal point): <input type="text" id="default"></p>
+<p>Only allow positive number: <input type="text" id="positive"></p>
+<p>Only allow negative numbers: <input type="text" id="negative"></p>
+<p>Only allow 1 to 100: <input type="text" id="min1max100"></p>
+<p>Only allow integer: <input type="text" id="integer"></p>
+</body>
+</html>

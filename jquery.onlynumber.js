@@ -3,7 +3,7 @@
  * https://github.com/mlinquan/jQuery-onlyNumber-Plugin
  *
  * @version
- * 0.0.1 (April 29, 2015)
+ * 0.0.2 (April 29, 2015)
  *
  * @copyright
  * Copyright (C) 2015 LinQuan.
@@ -18,8 +18,8 @@
         }
         var opt = $.extend({
             when: "change",
-            decimal: 0,
-            min: 0,
+            decimal: 2,
+            min: -Infinity,
             max: Infinity
         }, options);
         return this.each(function() {
@@ -29,6 +29,9 @@
                 var r;
                 var val = $that.val().toString();
                 if($that.data("predata") && val == $that.data("predata")) {
+                    return;
+                }
+                if(!val) {
                     return;
                 }
                 var h = "";
@@ -42,17 +45,23 @@
                 if(Number(r) > 0) {
                     r = Number(r);
                 }
-                if(val.indexOf('.') != -1) {
+                if(val.indexOf('.') != -1 && opt.decimal > 0) {
+                    if(r == "") {
+                        r = 0;
+                    }
                     r += '.' + vals[1];
                     if(vals[1].length && vals[1].length > opt.decimal) {
                         r = (parseInt(r * Math.pow(10, opt.decimal)) / Math.pow(10, opt.decimal)).toFixed(opt.decimal);
                     }
                 }
+                if(opt.max === 0) {
+                    h = "-";
+                }
                 r = h + r;
                 if(Number(r) < opt.min) {
                     r = opt.min;
                 }
-                if(Number(r) > opt.max) {
+                if(Number(r) > opt.max && opt.max !== 0) {
                     r = opt.max;
                 }
                 $that.val(r);
