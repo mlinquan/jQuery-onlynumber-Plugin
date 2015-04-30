@@ -1,4 +1,4 @@
-jQuery-onlyNumber-Plugin
+jQuery-onlynumber-Plugin
 ==============
 
 
